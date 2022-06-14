@@ -15,7 +15,7 @@ set cmdheight=1
 set laststatus=2
 set scrolloff=10
 set expandtab
-
+set exrc
 
 if exists("&termguicolors") && exists("&winblend")
   syntax enable
@@ -30,8 +30,6 @@ if exists("&termguicolors") && exists("&winblend")
   colorscheme NeoSolarized
 endif
 
-
 runtime ./maps.vim
 
-
-vim: set foldmethod=marker foldlevel=0:
+runtime ./plug.vim
