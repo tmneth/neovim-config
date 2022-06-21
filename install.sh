@@ -33,8 +33,9 @@ nvim +'PlugInstall --sync' +qa
 # Update coc.nvim language servers
 nvim +CocUpdateSync +qa
 
-# Add node modules to coc.nvim & vim-prettier
+# Build coc.nvim & vim-prettier
 npm install --prefix ~/.local/share/nvim/plugged/{coc.nvim,vim-prettier}
+npm run build --prefix ~/.local/share/nvim/plugged/{coc.nvim,vim-prettier}
 
 # Update the system
 sudo pacman -Syu --noconfirm --needed
