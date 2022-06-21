@@ -1,9 +1,10 @@
 # !/bin/bash
 
-# Check if existing nvim config is present
+# Check if existing nvim config is present and make backup
 if [ -f ~/.config/nvim/init.vim ] || [ -f ~/.config/nvim/init.lua ]; then
-    echo '[-] Existing nvim init config file found in ~/.config/nvim/. Please backup or remove it first before running this script.'
-    exit 1
+    echo '[-] Existing nvim init config file found in ~/.config/nvim. Making a backup...'
+    mv ~/.config/nvim ~/.config/nvim.backup
+    echo '[*] You can find a backup of your config in ~/.config/nvim.backup'  
 fi
 
 # Install dependencies
@@ -29,9 +30,7 @@ curl https://raw.githubusercontent.com/tmneth/neovim-config/main/config/maps.vim
 echo -e '[*] Running :PlugInstall...'
 nvim +'PlugInstall --sync' +qa
 
-# Add autocompletion for selected languages via :CocInstall
-echo -e '[*] Running :CocInstall...'
-nvim +'CocInstall --sync coc-html coc-css coc-tsserver coc-eslint coc-tslint coc-tslint-plugin coc-json' +qa
+# Update coc.nvim language servers
 nvim +CocUpdateSync +qa
 
 # Add node modules to coc.nvim & vim-prettier
